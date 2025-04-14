@@ -33,4 +33,4 @@ directory_type = "project"
 
 [tool.dg.project]
 root_module = "project_dagster_modal_pipes"
-defs_module = "project_dagster_modal_pipes.defs"
+code_location_target_module = "project_dagster_modal_pipes.definitions"

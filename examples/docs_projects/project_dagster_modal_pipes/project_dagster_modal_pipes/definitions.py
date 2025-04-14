@@ -19,10 +19,11 @@ USAGE
 """
 
 import dagster as dg
+
 import project_dagster_modal_pipes.defs
 
 # start_def
 defs = dg.Definitions.merge(
-    dg.components.load_defs(defs_root=project_dagster_modal_pipes.defs),
+    dg.components.load_defs(project_dagster_modal_pipes.defs),
 )
 # end_def
