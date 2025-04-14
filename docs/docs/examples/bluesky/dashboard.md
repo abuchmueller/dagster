@@ -13,7 +13,7 @@ For this example we will use [Power BI](https://www.microsoft.com/en-us/power-pl
 First we will initialize the `PowerBIWorkspace` resource which allows Dagster to communicate with Power BI.
 
 <CodeExample
-  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/dashboard/definitions.py"
+  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/defs/dashboard/definitions.py"
   language="python"
   startAfter="start_powerbi"
   endBefore="end_powerbi"
@@ -22,7 +22,7 @@ First we will initialize the `PowerBIWorkspace` resource which allows Dagster to
 Then, like dbt, we will define a translator. This time since the Power BI assets live downstream of our dbt models, we will map the Power BI assets to those model assets.
 
 <CodeExample
-  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/dashboard/definitions.py"
+  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/defs/dashboard/definitions.py"
   language="python"
   startAfter="start_dbt"
   endBefore="end_dbt"
@@ -31,7 +31,7 @@ Then, like dbt, we will define a translator. This time since the Power BI assets
 Finally we define the definition for our dashboard assets and Power BI resource.
 
 <CodeExample
-  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/dashboard/definitions.py"
+  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/defs/dashboard/definitions.py"
   language="python"
   startAfter="start_def"
   endBefore="end_def"

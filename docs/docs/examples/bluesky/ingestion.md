@@ -13,7 +13,7 @@ The data that serves the foundation for our project is [Bluesky](https://bsky.ap
 Because there is not an out of the box integration for Bluesky in Dagster, we will build our a custom <PyObject section="resources" module="dagster" object="ConfigurableResource"/>. Bluesky uses [atproto](https://docs.bsky.app/docs/advanced-guides/atproto) and provides an [SDK](https://docs.bsky.app/docs/get-started) which will serve as the backbone for our resource.
 
 <CodeExample
-  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/ingestion/resources.py"
+  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/defs/ingestion/resources.py"
   language="python"
   startAfter="start_resource"
   endBefore="end_resource"
@@ -24,7 +24,7 @@ The most important part of our resource is that it returns the atproto client wh
 With the client defined, we can move to the strategy for pulling from Bluesky. There is a lot of data we can potentially pull but we will focus around posts related to data. In Bluesky there is the idea of [starter packs](https://bsky.social/about/blog/06-26-2024-starter-packs) which are curated lists of users associated with specific domains. We will ingest the [Data People](https://blueskystarterpack.com/starter-packs/lc5jzrr425fyah724df3z5ik/3l7cddlz5ja24) pack. Using the atproto client we can get all the members of that starter pack.
 
 <CodeExample
-  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/ingestion/utils/atproto.py"
+  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/defs/ingestion/utils/atproto.py"
   language="python"
   startAfter="start_starter_pack"
   endBefore="end_starter_pack"
@@ -37,7 +37,7 @@ The `get_all_feed_items` function is similar in using the atproto client to get 
 Our first asset (`starter_pack_snapshot`) is responsible for extracting the members of the Data People starter pack and loading the data into R2. Let's look at the asset decorator and parameters before getting into the logic of the function.
 
 <CodeExample
-  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/ingestion/definitions.py"
+  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/defs/ingestion/definitions.py"
   language="python"
   startAfter="start_starter_pack_dec"
   endBefore="end_starter_pack_dec"
@@ -46,7 +46,7 @@ Our first asset (`starter_pack_snapshot`) is responsible for extracting the memb
 First we can see that we are setting a static partition for the specific starter pack. Next an `automation_condition` is added. This is a simple way to set a schedule for this asset and ensure it runs every midnight. Finally we add `kinds` of `Python` and `group_name` of `ingestion` which will help us organize our assets in the Dagster UI. For the parameters we will use the `ATProtoResource` we created for Bluesky data and the Dagster maintained `S3Resource` which works for R2. Now we can walk through the logic of the function.
 
 <CodeExample
-  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/ingestion/definitions.py"
+  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/defs/ingestion/definitions.py"
   language="python"
   startAfter="start_starter_pack_func"
   endBefore="end_starter_pack_func"
@@ -55,7 +55,7 @@ First we can see that we are setting a static partition for the specific starter
 Using the `ATProtoResource` we initialize the client and extract the members from the starter pack. That information is stored in R2 at a path defined by the current date. We also update a dynamic partition that is defined outside of this asset. This partition will be used by our next asset.
 
 <CodeExample
-  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/ingestion/definitions.py"
+  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/defs/ingestion/definitions.py"
   language="python"
   startAfter="start_dynamic_partition"
   endBefore="end_dynamic_partition"
@@ -68,7 +68,7 @@ Finally we set metadata about the file we saved in the Dagster asset catalog.
 The next asset is `actor_feed_snapshot` where the feed data will be ingested. This asset will use the same resources as the `starter_pack_snapshot` asset and has a similar flow. The primary difference is that while `actor_feed_snapshot` had a single static partition, `actor_feed_snapshot` uses a dynamic partition.
 
 <CodeExample
-  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/ingestion/definitions.py"
+  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/defs/ingestion/definitions.py"
   language="python"
   startAfter="start_actor_feed_snapshot"
   endBefore="end_actor_feed_snapshot"
@@ -83,7 +83,7 @@ One other difference you may have noticed is the `automation_condition`. Because
 This is everything we need for ingestion. At the bottom of the file we will set the <PyObject section="definitions" module="dagster" object="Definitions" />. This will contain all the assets and initialized resources.
 
 <CodeExample
-  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/ingestion/definitions.py"
+  path="docs_projects/project_atproto_dashboard/project_atproto_dashboard/defs/ingestion/definitions.py"
   language="python"
   startAfter="start_def"
   endBefore="end_def"
