@@ -7,11 +7,10 @@ from textwrap import dedent
 import dagster as dg
 import dagster_duckdb as dg_duckdb
 import pandas as pd
+import project_llm_fine_tune.defs.constants as constants
+import project_llm_fine_tune.defs.utils as utils
 from dagster_openai import OpenAIResource
 from openai import OpenAI
-
-import project_llm_fine_tune.constants as constants
-import project_llm_fine_tune.utils as utils
 
 goodreads = dg.AssetSpec(
     "goodreads_source_dataset",
