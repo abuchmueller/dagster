@@ -8,7 +8,7 @@ from dagster_dbt import DagsterDbtTranslator, DbtCliResource, DbtProject, dbt_as
 
 # start_dbt_project
 dbt_project = DbtProject(
-    project_dir=Path(__file__).joinpath("..", "..", "..", "dbt_project").resolve(),
+    project_dir=Path(__file__).joinpath("..", "..", "..", "..", "dbt_project").resolve(),
     target=os.getenv("DBT_TARGET"),
 )
 dbt_project.prepare_if_dev()
@@ -42,7 +42,6 @@ def dbt_bluesky(context: dg.AssetExecutionContext, dbt: DbtCliResource):
 
 
 defs = dg.Definitions(
-    assets=[dbt_bluesky],
     resources={
         "dbt": dbt_resource,
     },

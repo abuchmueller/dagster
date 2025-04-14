@@ -4,8 +4,8 @@ from datetime import datetime
 import dagster as dg
 from dagster_aws.s3 import S3Resource
 
-from project_atproto_dashboard.ingestion.resources import ATProtoResource
-from project_atproto_dashboard.ingestion.utils.atproto import (
+from project_atproto_dashboard.defs.ingestion.resources import ATProtoResource
+from project_atproto_dashboard.defs.ingestion.utils.atproto import (
     get_all_feed_items,
     get_all_starter_pack_members,
 )
@@ -143,7 +143,6 @@ s3_resource = S3Resource(
 
 # start_def
 defs = dg.Definitions(
-    assets=[starter_pack_snapshot, actor_feed_snapshot],
     resources={
         "atproto_resource": atproto_resource,
         "s3_resource": s3_resource,

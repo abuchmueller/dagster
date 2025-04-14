@@ -1,35 +1,34 @@
 [project]
-name = "project_atproto_dashboard"
-version = "0.1.0"
-description = "Add your description here"
+name = "project-atproto-dashboard"
+version = "0.0.1"
+description = "Project Bluesky"
 readme = "README.md"
 requires-python = ">=3.9,<3.13"
 dependencies = [
-    "atproto",
-    "dagster",
+    "dagster==1.10.9",
     "dagster-aws",
     "dagster-dbt",
     "dagster-duckdb",
     "dagster-powerbi",
-    "dagster-webserver",
     "dbt-duckdb",
     "tenacity",
+    "atproto",
 ]
 
-[project.optional-dependencies]
-dev = [
+[tool.uv]
+dev-dependencies = [
     "dagster-webserver",
     "pytest",
-    "ruff",
+    "ruff==0.8.4",
 ]
 
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
-[tool.dagster]
-module_name = "project_atproto_dashboard.definitions"
-project_name = "project_atproto_dashboard"
+[tool.dg]
+directory_type = "project"
 
-[tool.setuptools.packages.find]
-exclude=["project_atproto_dashboard_tests"]
+[tool.dg.project]
+root_module = "project_atproto_dashboard"
+code_location_target_module = "project_atproto_dashboard.definitions"
