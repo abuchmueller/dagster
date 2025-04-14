@@ -1,3 +1,23 @@
+[project]
+name = "project-prompt-engineering"
+version = "0.0.1"
+description = "Project Prompt Engineering"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "dagster==1.10.9",
+    "dagster-anthropic",
+    "pydantic",
+    "requests",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "ruff==0.8.4",
+    "pytest",
+    "dagster-webserver",
+]
+
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"

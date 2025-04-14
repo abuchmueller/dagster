@@ -6,7 +6,7 @@ import dagster as dg
 from dagster_anthropic import AnthropicResource
 from pydantic import BaseModel
 
-from project_prompt_eng.resources import NRELResource
+from project_prompt_eng.defs.resources import NRELResource
 
 # start_location_prompt
 PROMPT_LOCATION = """
@@ -170,4 +170,6 @@ def available_fuel_stations(
 
     if fuel_stations_open == 0:
         context.log.info("Sorry, no available fuel stations right now")
+
+
 # end_available_fuel_stations

@@ -1,8 +1,7 @@
 import dagster as dg
 import requests
-from pydantic import Field
 from dagster_anthropic import AnthropicResource
-
+from pydantic import Field
 
 BASE_URL = "https://developer.nrel.gov/api/alt-fuel-stations/v1.json"
 
@@ -28,8 +27,9 @@ class NRELResource(dg.ConfigurableResource):
 
         resp = requests.get(url, params=params)
         return resp.json()["fuel_stations"]
-# end_resource
 
+
+# end_resource
 
 
 defs = dg.Definitions(
