@@ -36,3 +36,6 @@ pinecone_resource = PineconeResource(
     pinecone_api_key=dg.EnvVar("PINECONE_API_KEY"), openai_api_key=dg.EnvVar("OPENAI_API_KEY")
 )
 # end_resource_int
+
+
+defs = dg.Definitions(resources={"pinecone": pinecone_resource})

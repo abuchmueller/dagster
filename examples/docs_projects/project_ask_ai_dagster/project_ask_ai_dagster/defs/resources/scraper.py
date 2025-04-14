@@ -60,3 +60,6 @@ class SitemapScraper(dg.ConfigurableResource):
 # start_resource_init
 scraper_resource = SitemapScraper(sitemap_url=dg.EnvVar("DOCS_SITEMAP"))
 # end_resource_init
+
+
+defs = dg.Definitions(resources={"scraper": scraper_resource})

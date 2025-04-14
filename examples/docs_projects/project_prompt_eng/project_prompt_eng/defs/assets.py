@@ -170,6 +170,4 @@ def available_fuel_stations(
 
     if fuel_stations_open == 0:
         context.log.info("Sorry, no available fuel stations right now")
-
-
 # end_available_fuel_stations

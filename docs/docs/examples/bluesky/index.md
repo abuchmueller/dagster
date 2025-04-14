@@ -77,7 +77,7 @@ To make sure Dagster and its dependencies were installed correctly, navigate to 
 followed by a bash code snippet for
 
 ```bash
-dagster dev
+dg dev
 ```
 
 ## Next steps

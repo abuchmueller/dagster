@@ -63,7 +63,7 @@ First, set up a new Dagster project.
 To make sure Dagster and its dependencies were installed correctly, navigate to the project root directory and start the Dagster webserver:
 
 ```bash
-dagster dev
+dg dev
 ```
 
 ## Next steps

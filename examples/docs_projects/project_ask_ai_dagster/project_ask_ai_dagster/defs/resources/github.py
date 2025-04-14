@@ -216,3 +216,6 @@ class GithubResource(dg.ConfigurableResource):
 # start_resource_init
 github_resource = GithubResource(github_token=dg.EnvVar("GITHUB_TOKEN"))
 # end_resource_init
+
+
+defs = dg.Definitions(resources={"github": github_resource})
