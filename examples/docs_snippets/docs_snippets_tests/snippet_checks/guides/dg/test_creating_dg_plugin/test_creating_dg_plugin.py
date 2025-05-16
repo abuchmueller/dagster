@@ -45,7 +45,7 @@ def test_creating_dg_plugin(update_snippets: bool) -> None:
 
         create_file(
             Path("src") / "my_library" / "empty_component.py",
-            snippet_path=_SNIPPETS_DIR / f"{get_next_snip_number()}-empty-component.py",
+            snippet_path=_SNIPPETS_DIR / f"{get_next_snip_number()}-empty-defs.py",
             contents=format_multiline("""
             from dataclasses import dataclass
 

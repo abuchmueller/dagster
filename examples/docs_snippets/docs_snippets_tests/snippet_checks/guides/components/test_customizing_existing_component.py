@@ -98,10 +98,8 @@ def test_components_docs_adding_attributes_to_assets(
                 custom_comparison_fn=compare_tree_output,
             )
             create_file(
-                Path("my_project") / "defs" / "my_sling_sync" / "component.yaml",
-                contents=(
-                    Path("my_project") / "defs" / "my_sling_sync" / "component.yaml"
-                )
+                Path("my_project") / "defs" / "my_sling_sync" / "defs.yaml",
+                contents=(Path("my_project") / "defs" / "my_sling_sync" / "defs.yaml")
                 .read_text()
                 .replace(
                     "dagster_sling.SlingReplicationCollectionComponent",
@@ -109,7 +107,7 @@ def test_components_docs_adding_attributes_to_assets(
                 ),
                 snippet_path=SNIPPETS_DIR
                 / component_type
-                / f"{get_next_snip_number()}-component.yaml",
+                / f"{get_next_snip_number()}-defs.yaml",
             )
             get_next_snip_number()
         elif component_type == "global":
@@ -142,10 +140,8 @@ def test_components_docs_adding_attributes_to_assets(
                 custom_comparison_fn=compare_tree_output,
             )
             create_file(
-                Path("my_project") / "defs" / "my_sling_sync" / "component.yaml",
-                contents=(
-                    Path("my_project") / "defs" / "my_sling_sync" / "component.yaml"
-                )
+                Path("my_project") / "defs" / "my_sling_sync" / "defs.yaml",
+                contents=(Path("my_project") / "defs" / "my_sling_sync" / "defs.yaml")
                 .read_text()
                 .replace(
                     "dagster_sling.SlingReplicationCollectionComponent",
@@ -153,7 +149,7 @@ def test_components_docs_adding_attributes_to_assets(
                 ),
                 snippet_path=SNIPPETS_DIR
                 / component_type
-                / f"{get_next_snip_number()}-component.yaml",
+                / f"{get_next_snip_number()}-defs.yaml",
             )
 
         _run_command("dg check yaml")
@@ -191,12 +187,12 @@ def test_components_docs_adding_attributes_to_assets(
             ).strip(),
         )
         type_str = (
-            (Path("my_project") / "defs" / "my_sling_sync" / "component.yaml")
+            (Path("my_project") / "defs" / "my_sling_sync" / "defs.yaml")
             .read_text()
             .split("\n")[0]
         )
         create_file(
-            file_path=Path("my_project") / "defs" / "my_sling_sync" / "component.yaml",
+            file_path=Path("my_project") / "defs" / "my_sling_sync" / "defs.yaml",
             contents=format_multiline(f"""
                 {type_str}
 
@@ -274,9 +270,9 @@ def test_components_docs_adding_attributes_to_assets(
             ),
             snippet_path=SNIPPETS_DIR / f"{get_next_snip_number()}-component.py",
         )
-        # Update the component.yaml to use the new scope
+        # Update the defs.yaml to use the new scope
         create_file(
-            Path("my_project") / "defs" / "my_sling_sync" / "component.yaml",
+            Path("my_project") / "defs" / "my_sling_sync" / "defs.yaml",
             contents=format_multiline(f"""
                 {type_str}
 
@@ -294,7 +290,7 @@ def test_components_docs_adding_attributes_to_assets(
                 """),
             snippet_path=SNIPPETS_DIR
             / component_type
-            / f"{get_next_snip_number()}-component.yaml",
+            / f"{get_next_snip_number()}-defs.yaml",
             snippet_replace_regex=[
                 (r".*sling:.*\n.*\n.*\n.*\n.*\n", ""),
             ],
