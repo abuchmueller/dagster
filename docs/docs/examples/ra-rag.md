@@ -63,7 +63,6 @@ The raw unstructured data from GitHub must be converted into vector embeddings b
 
 An index is managed in Weaviate to store embeddings, with new or updated GitHub embeddings continuously loaded into the index as changes occur.
 
-
 **Dagster Features**
 
 - `dagster_weaviate`
