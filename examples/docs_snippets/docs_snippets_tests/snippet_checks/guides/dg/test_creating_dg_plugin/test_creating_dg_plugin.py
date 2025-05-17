@@ -98,7 +98,7 @@ def test_creating_dg_plugin(update_snippets: bool) -> None:
             update_snippets=update_snippets,
         )
 
-        # Create a virtual environment, install the package, and list plugins
+        # Create a virtual environment, install the package, and list components
         _run_command("uv venv .venv")
         _run_command(
             f"uv pip install --editable . "
@@ -110,9 +110,10 @@ def test_creating_dg_plugin(update_snippets: bool) -> None:
         )
 
         run_command_and_snippet_output(
-            cmd="source .venv/bin/activate && dg list plugins --plugin my_library",
-            snippet_path=_SNIPPETS_DIR / f"{get_next_snip_number()}-list-plugins.txt",
+            cmd="source .venv/bin/activate && dg list components --package my_library",
+            snippet_path=_SNIPPETS_DIR
+            / f"{get_next_snip_number()}-list-components.txt",
             update_snippets=update_snippets,
-            print_cmd="dg list plugins --plugin my_library",
+            print_cmd="dg list components --package my_library",
             snippet_replace_regex=[_MASK_USING_LOG_MESSAGE],
         )

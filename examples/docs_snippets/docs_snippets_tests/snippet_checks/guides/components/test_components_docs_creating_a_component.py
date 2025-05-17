@@ -70,7 +70,7 @@ def test_creating_a_component(
             contents=(COMPONENTS_SNIPPETS_DIR / "with-config-schema.py").read_text(),
         )
         # Sanity check that the component type is registered properly
-        _run_command("dg list plugins")
+        _run_command("dg list components")
 
         # Add build defs
         create_file(
@@ -83,9 +83,9 @@ def test_creating_a_component(
         #########################################################
 
         run_command_and_snippet_output(
-            cmd="dg list plugins",
+            cmd="dg list components",
             snippet_path=COMPONENTS_SNIPPETS_DIR
-            / f"{get_next_snip_number()}-dg-list-plugins.txt",
+            / f"{get_next_snip_number()}-dg-list-components.txt",
             update_snippets=update_snippets,
             snippet_replace_regex=[
                 MASK_MY_COMPONENT_LIBRARY,

@@ -195,9 +195,9 @@ def test_components_docs_index(
         )
 
         run_command_and_snippet_output(
-            cmd="dg list plugins",
+            cmd="dg list components",
             snippet_path=COMPONENTS_SNIPPETS_DIR
-            / f"{next_snip_no()}-dg-list-plugins.txt",
+            / f"{next_snip_no()}-dg-list-components.txt",
             update_snippets=update_snippets,
             snippet_replace_regex=[
                 MASK_JAFFLE_PLATFORM,
@@ -216,9 +216,9 @@ def test_components_docs_index(
         )
 
         run_command_and_snippet_output(
-            cmd="dg list plugins",
+            cmd="dg list components",
             snippet_path=COMPONENTS_SNIPPETS_DIR
-            / f"{next_snip_no()}-dg-list-plugins.txt",
+            / f"{next_snip_no()}-dg-list-components.txt",
             update_snippets=update_snippets,
             snippet_replace_regex=[
                 MASK_JAFFLE_PLATFORM,
@@ -358,9 +358,9 @@ def test_components_docs_index(
                 ignore_output=True,
             )
             run_command_and_snippet_output(
-                cmd="dg list plugins",
+                cmd="dg list components",
                 snippet_path=COMPONENTS_SNIPPETS_DIR
-                / f"{next_snip_no()}-dg-list-plugins.txt",
+                / f"{next_snip_no()}-dg-list-components.txt",
                 update_snippets=update_snippets,
                 snippet_replace_regex=[
                     MASK_JAFFLE_PLATFORM,
@@ -462,9 +462,9 @@ def test_components_docs_index(
             )
 
             run_command_and_snippet_output(
-                cmd="dg list plugins",
+                cmd="dg list components",
                 snippet_path=COMPONENTS_SNIPPETS_DIR
-                / f"{next_snip_no()}-dg-list-plugins.txt",
+                / f"{next_snip_no()}-dg-list-components.txt",
                 update_snippets=update_snippets,
                 snippet_replace_regex=[
                     MASK_JAFFLE_PLATFORM,

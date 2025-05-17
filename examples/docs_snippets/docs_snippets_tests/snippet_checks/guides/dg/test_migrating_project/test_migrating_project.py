@@ -250,6 +250,17 @@ def test_migrating_project(
                 ignore_output=True,
             )
 
+        plugin_table = run_command_and_snippet_output(
+            cmd="dg list plugins",
+            snippet_path=_SNIPPETS_DIR / f"{get_next_snip_number()}-list-plugins.txt",
+            update_snippets=update_snippets,
+            snippet_replace_regex=[
+                MASK_USING_LOG_MESSAGE,
+                MASK_PLUGIN_CACHE_REBUILD,
+            ],
+        )
+        assert "my_existing_project.components" in plugin_table
+
         run_command_and_snippet_output(
             cmd="dg scaffold component-type Foo",
             snippet_path=_SNIPPETS_DIR
@@ -263,8 +274,9 @@ def test_migrating_project(
         )
 
         plugin_table = run_command_and_snippet_output(
-            cmd="dg list plugins",
-            snippet_path=_SNIPPETS_DIR / f"{get_next_snip_number()}-list-plugins.txt",
+            cmd="dg list components",
+            snippet_path=_SNIPPETS_DIR
+            / f"{get_next_snip_number()}-list-components.txt",
             update_snippets=update_snippets,
             snippet_replace_regex=[
                 MASK_USING_LOG_MESSAGE,
