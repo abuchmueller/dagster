@@ -28,7 +28,7 @@ uv_activate_venv() {
 }
 
 # https://vercel.com/docs/projects/environment-variables/system-environment-variables#VERCEL
-if [ "$VERCEL" = "1" || "$GITHUB_ACTIONS" = "true" ]; then
+if [[ "$VERCEL" = "1" || "$GITHUB_ACTIONS" = "true" ]]; then
   echo "Detected Vercel environment. Running Vercel-specific commands and configurations."
   # Required to resolve `locale.Error: unsupported locale setting`
   export LC_ALL=C.UTF-8
