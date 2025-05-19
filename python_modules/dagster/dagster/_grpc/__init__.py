@@ -8,16 +8,7 @@ The GRPC layer is not intended to supplant the dagster-graphql layer, which shou
 drive web frontends like the Dagster UI.
 """
 
-from dagster._grpc.client import (
-    DagsterGrpcClient as DagsterGrpcClient,
-    client_heartbeat_thread as client_heartbeat_thread,
-    ephemeral_grpc_api_client as ephemeral_grpc_api_client,
-)
 from dagster._grpc.impl import core_execute_run as core_execute_run
-from dagster._grpc.server import (
-    DagsterGrpcServer as DagsterGrpcServer,
-    GrpcServerProcess as GrpcServerProcess,
-)
 from dagster._grpc.types import (
     CanCancelExecutionRequest as CanCancelExecutionRequest,
     CanCancelExecutionResult as CanCancelExecutionResult,
