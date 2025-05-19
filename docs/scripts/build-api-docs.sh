@@ -13,8 +13,10 @@ uv_install() {
   if command -v uv &>/dev/null; then
     echo "uv is already installed in this environment..."
   else
-      curl -LsSf https://astral.sh/uv/install.sh | sh
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    if [ -f "$HOME/.local/bin/env" ]; then
       source "$HOME/.local/bin/env"
+    fi
   fi
 }
 
