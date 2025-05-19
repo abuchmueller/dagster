@@ -19,7 +19,7 @@ uv_activate_venv() {
 }
 
 # TODO - refactor Vercel logic shared between `build-kinds-tags` and `build-api-docs` into single script
-if [ "$VERCEL" = "1" ]; then
+if [ "$VERCEL" = "1" || "$GITHUB_ACTIONS" = "true" ]; then
   echo "Detected Vercel environment. Running Vercel-specific commands and configurations."
   export LC_ALL=C.UTF-8
   uv_install
