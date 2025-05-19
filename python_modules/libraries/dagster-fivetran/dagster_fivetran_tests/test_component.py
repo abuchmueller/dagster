@@ -266,7 +266,7 @@ def test_translation(
         body = copy.deepcopy(BASIC_FIVETRAN_COMPONENT_BODY)
         body["attributes"]["translation"] = attributes
         with (
-            environ({"SOURCES__ACCESS_TOKEN": "fake"}),
+            environ({"FIVETRAN_API_KEY": TEST_API_KEY, "FIVETRAN_API_SECRET": TEST_API_SECRET}),
             setup_fivetran_component(
                 component_body=body,
             ) as (
