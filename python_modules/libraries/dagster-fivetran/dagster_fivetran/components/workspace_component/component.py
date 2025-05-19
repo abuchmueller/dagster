@@ -10,6 +10,9 @@ from dagster._core.definitions.job_definition import default_job_io_manager
 from dagster.components import Component, ComponentLoadContext, Model, Resolvable
 from dagster.components.resolved.base import resolve_fields
 from dagster.components.utils import TranslatorResolvingInfo
+from dagster_shared import check
+from typing_extensions import TypeAlias
+
 from dagster_fivetran.asset_defs import build_fivetran_assets_definitions
 from dagster_fivetran.resources import FivetranWorkspace
 from dagster_fivetran.translator import (
@@ -17,8 +20,6 @@ from dagster_fivetran.translator import (
     FivetranConnector,
     FivetranConnectorTableProps,
 )
-from dagster_shared import check
-from typing_extensions import TypeAlias
 
 
 def resolve_translation(context: dg_components.ResolutionContext, model):
