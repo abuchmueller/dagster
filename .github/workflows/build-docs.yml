@@ -108,6 +108,15 @@ jobs:
         env:
           GITHUB_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
 
+      - name: Build Docs
+        if: |
+          github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/master')
+        run: |
+          cd docs
+          yarn build-api-docs
+          yarn build-kinds-tags
+          yarn build
+
       # Commits to pull requests result in preview deployments
       - name: Publish Preview to Vercel
         uses: amondnet/vercel-action@v25
