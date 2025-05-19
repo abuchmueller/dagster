@@ -34,6 +34,14 @@ setup(
     ],
     packages=find_packages(exclude=["create_dg_app_tests*"]),
     include_package_data=True,
-    install_requires=[],
+    install_requires=[
+        f"dagster-dg{pin}",
+        f"dagster-shared{pin}",
+    ],
     zip_safe=False,
+    entry_points={
+        "console_scripts": [
+            "create-dg-app = create_dg_app.cli:main",
+        ]
+    },
 )
